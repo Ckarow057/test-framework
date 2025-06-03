@@ -10,6 +10,6 @@ export class AppService {
 @Injectable()
 export class AppService2 {
   getHelloTwice(): string {
-    return 'Hello World, but twice!';
+    return 'Hello World, but Twice!';
   }
 }
