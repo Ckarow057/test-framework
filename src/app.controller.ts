@@ -1,21 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('hello')
-export class AppController {
+@Controller('sms')
+export class smsController {
   constructor(private readonly appService: AppService) { }
 
-  @Get('once')
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('recieve')
+  getRecieve(): string {
+    return this.appService.getRecieveMsg();
   }
 
-  @Get('twice')
-  getHelloTwice(): string {
-    return this.appService.getHelloTwice();
+  @Get('verify')
+  getVerify(): string {
+    return this.appService.getVerifyMsg();
   }
-
-
 }
 
 

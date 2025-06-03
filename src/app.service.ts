@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!\n';
+  getRecieveMsg(): string {
+    return 'Message Recieved!\n';
   }
 
-  getHelloTwice(): string {
-    return 'Hello World, but Twice!';
+  getVerifyMsg(): string {
+    return 'Message Verified!\n';
   }
 }
 
