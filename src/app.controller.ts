@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
+import { designateLang } from './utils/message-patterns';
 
 @Controller('sms')
 export class smsController {
@@ -7,17 +8,11 @@ export class smsController {
 
   @Post('webhook')
   async handleIncomingSMS(@Body() payload: any): Promise<string> {
-    // Change these lines to match your payload structure
-    const messageContent = payload.Body;  // Changed from payload.Body
-    const from = payload.From;              // Changed from payload.From
+    const messageContent = payload.Body;
+    const from = payload.From;
+    const lang = designateLang(messageContent);
+    console.log(lang);
 
-    // Rest of the code...
-    let lang = '';
-    if (messageContent.split(", ")[0].trim() == "Hello") {
-      lang = 'en'
-    } else {
-      lang = 'es'
-    }
     this.appService.addMessage(from, messageContent);
     let temp = false;
     if (this.appService.verifyMsg(from, messageContent, lang)) {
@@ -31,6 +26,3 @@ export class smsController {
     return this.appService.getMessages();
   }
 }
-
-
-

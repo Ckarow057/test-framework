@@ -15,3 +15,13 @@ export function createMessagePattern(template: string): RegExp {
     const pattern = escaped.replace(/\[([^\]]+)\]/g, '(.+?)');
     return new RegExp(`^${pattern}$`);
 }
+
+export function designateLang(content: string): string {
+    let lang = '';
+    if (content.split(", ")[0].trim() == "Hello") {
+        lang = 'en'
+    } else {
+        lang = 'es'
+    }
+    return lang;
+}
