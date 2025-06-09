@@ -7,17 +7,23 @@ export class smsController {
 
   @Post('webhook')
   async handleIncomingSMS(@Body() payload: any): Promise<string> {
-    const messageContent = payload.Body;
-    const from = payload.From;
+    // Change these lines to match your payload structure
+    const messageContent = payload.Body;  // Changed from payload.Body
+    const from = payload.From;              // Changed from payload.From
 
-    // Store the message
-    this.appService.addMessage(from, messageContent);
-    if (this.appService.verifyMsg(from, messageContent)) {
-      this.appService.getVerifyMsg;
-      return `Message received: ${messageContent}`;
+    // Rest of the code...
+    let lang = '';
+    if (messageContent.split(", ")[0].trim() == "Hello") {
+      lang = 'en'
     } else {
-      return 'Message verification failed.';
+      lang = 'es'
     }
+    this.appService.addMessage(from, messageContent);
+    let temp = false;
+    if (this.appService.verifyMsg(from, messageContent, lang)) {
+      temp = true;
+    }
+    return `${temp}`;
   }
 
   @Get('messages')
