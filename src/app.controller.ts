@@ -5,14 +5,21 @@ import { AppService } from './app.service';
 export class smsController {
   constructor(private readonly appService: AppService) { }
 
-  @Get('recieve')
-  getRecieve(): string {
-    return this.appService.getRecieveMsg();
+  @Post('webhook')
+  async handleIncomingSMS(@Body() payload: any): Promise<string> {
+    const messageContent = payload.Body;
+    const from = payload.From;
+
+    // Store the message
+    this.appService.addMessage(from, messageContent);
+    // console.log(`Received message from ${from}: ${messageContent}`);
+
+    return `Message received: ${messageContent}`;
   }
 
-  @Get('verify')
-  getVerify(): string {
-    return this.appService.getVerifyMsg();
+  @Get('messages')
+  getMessages() {
+    return this.appService.getMessages();
   }
 }
 
