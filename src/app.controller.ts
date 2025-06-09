@@ -12,9 +12,12 @@ export class smsController {
 
     // Store the message
     this.appService.addMessage(from, messageContent);
-    // console.log(`Received message from ${from}: ${messageContent}`);
-
-    return `Message received: ${messageContent}`;
+    if (this.appService.verifyMsg(from, messageContent)) {
+      this.appService.getVerifyMsg;
+      return `Message received: ${messageContent}`;
+    } else {
+      return 'Message verification failed.';
+    }
   }
 
   @Get('messages')
