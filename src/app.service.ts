@@ -24,6 +24,16 @@ export class AppService {
     return [...this.messages];
   }
 
+  printMessages() {
+    if (this.messages.length === 0) {
+      return "No messages available";
+    }
+
+    return this.messages.map(msg =>
+      `From: ${msg.from}\nMessage: ${msg.content}`
+    ).join("\n\n");
+  }
+
   getRecieveMsg(): string {
     return 'Message Received!';
   }

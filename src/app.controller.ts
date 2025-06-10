@@ -25,4 +25,9 @@ export class smsController {
   getMessages() {
     return this.appService.getMessages();
   }
+
+  @Get('print')
+  printMessages() {
+    return this.appService.printMessages();
+  }
 }
