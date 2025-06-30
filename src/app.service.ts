@@ -1,22 +1,69 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { createMessagePattern, messageTemplates } from './utils/message-patterns';
+import { Twilio } from 'twilio';
+
 
 @Injectable()
 export class AppService {
   private messages: { from: string; content: string; }[] = [];
+  private twilio: Twilio;
+  private messagingServiceSid: string;
+  constructor() {
+    if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_MESSAGING_SERVICE_SID) {
+      throw new Error('Missing required Twilio environment variables');
+    }
+    this.twilio = new Twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    );
+    this.messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID;
+  }
+
+  async sendMessage(to: string, response: string) {
+    const serviceNumber = "2489637551";
+    if (to === serviceNumber) {
+      Logger.log('Not sending message to service number itself.');
+      return;
+    }
+    try {
+      const message = await this.twilio.messages.create({
+        to: serviceNumber,
+        body: response,
+        // messagingServiceSid: this.messagingServiceSid,
+        from: "2485878298"
+      });
+      // return message.sid;
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      throw error;
+    }
+  }
 
   addMessage(from: string, content: string) {
     this.messages.push({ from, content });
   }
 
-  verifyMsg(from: string, content: string, language: string): boolean {
+  verifyMsg(from: string, content: string, language: string): string {
     try {
-      const template = messageTemplates[language].content;
-      const pattern = createMessagePattern(template);
-      return pattern.test(content);
+      const templates = messageTemplates.filter(tmpl => tmpl.lang === language);
+      for (const tmpl of templates) {
+        const pattern = createMessagePattern(tmpl.content);
+        if (pattern.test(content)) {
+          Logger.log(`Matched pattern: ${pattern}`);
+          Logger.log(`Content: ${content}`);
+          const response = tmpl.response;
+          if (!response) {
+            Logger.log("Null response")
+          } else {
+            return response
+          }
+        }
+      }
+      Logger.log('No matching template found');
+      return "Error";
     } catch (error) {
       console.error('Message verification failed:', error);
-      return false;
+      return "Verification failed";
     }
   }
 
@@ -42,4 +89,3 @@ export class AppService {
     return 'Message Verified!';
   }
 }
-
