@@ -21,8 +21,9 @@ export class AppService {
 
   async sendMessage(to: string, response: string) {
     const serviceNumber = "2489637551";
+    // const serviceNumber = "6084776016";
     if (to === serviceNumber) {
-      Logger.log('Not sending message to service number itself.');
+      Logger.log('TO/FROM SIMILARITY ISSUE.');
       return;
     }
     try {
@@ -32,7 +33,6 @@ export class AppService {
         // messagingServiceSid: this.messagingServiceSid,
         from: "2485878298"
       });
-      // return message.sid;
     } catch (error) {
       console.error('Failed to send message:', error);
       throw error;
@@ -43,14 +43,13 @@ export class AppService {
     this.messages.push({ from, content });
   }
 
-  verifyMsg(from: string, content: string, language: string): string {
+  verifyMsg(content: string, language: string): string {
     try {
       const templates = messageTemplates.filter(tmpl => tmpl.lang === language);
       for (const tmpl of templates) {
         const pattern = createMessagePattern(tmpl.content);
         if (pattern.test(content)) {
           Logger.log(`Matched pattern: ${pattern}`);
-          Logger.log(`Content: ${content}`);
           const response = tmpl.response;
           if (!response) {
             Logger.log("Null response")
@@ -79,13 +78,5 @@ export class AppService {
     return this.messages.map(msg =>
       `From: ${msg.from}\nMessage: ${msg.content}`
     ).join("\n\n");
-  }
-
-  getRecieveMsg(): string {
-    return 'Message Received!';
-  }
-
-  getVerifyMsg(): string {
-    return 'Message Verified!';
   }
 }
