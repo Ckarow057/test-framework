@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Body, Res, Logger } from '@nestjs/common';
 import { AppService } from './app.service';
-import { createMessagePattern, messageTemplates } from './utils/message-patterns';
 import { Response } from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -8,8 +7,8 @@ import MessagingResponse = require('twilio/lib/twiml/MessagingResponse');
 import { shouldIgnoreMessage } from './utils/message-utils';
 
 
-// const LANG: string = "en";
-const LANG: string = "es";
+const LANG: string = "en";
+// const LANG: string = "es";
 const EN_TEMPLATES = ['esConsentReq', 'esLangReq', 'errMsg', 'esDiseaseReq', 'esCheckupReq'];
 const ES_TEMPLATES = ['consentReq', 'langReq', 'errMsg', 'diseaseReq', 'checkupReq'];
 let processing = Promise.resolve();
