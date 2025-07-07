@@ -23,17 +23,17 @@ export class SmsController {
     await processing;
   }
 
-  @Get('/messages')
+  @Get('messages')
   getMessages() {
     return this.appService.getMessages();
   }
 
-  @Get('/print')
+  @Get('print')
   printMessages() {
     return this.appService.printMessages();
   }
 
-  @Get('/export')
+  @Get('export')
   exportMessages(@Res() res: Response) {
     const messages = this.appService.getMessages();
     const folderPath = path.join(process.cwd(), 'src', 'json_templates');
@@ -64,15 +64,7 @@ export class SmsController {
           return;
         }
       }
-      this.appService.addMessage(from, messageContent);
-      const response = this.appService.verifyMsg(messageContent, LANG);
-
-      await this.appService.sendMessage(from, response)
-        .then(() => Logger.log(`Message sent to ${from} via Messaging Service pool.`))
-        .catch(error => console.error('Failed to send message via Messaging Service:', error));
-
-      res.setHeader('Content-Type', 'text/xml');
-      res.send(new MessagingResponse().toString());
+      this.verifyAndSend(messageContent, LANG, from, res);
       return;
     }
     else if (LANG === "es") {
@@ -85,16 +77,21 @@ export class SmsController {
           return;
         }
       }
-      this.appService.addMessage(from, messageContent);
-      const response = this.appService.verifyMsg(messageContent, LANG);
-
-      await this.appService.sendMessage(from, response)
-        .then(() => Logger.log(`Message sent to ${from} via Messaging Service pool.`))
-        .catch(error => console.error('Failed to send message via Messaging Service:', error));
-
-      res.setHeader('Content-Type', 'text/xml');
-      res.send(new MessagingResponse().toString());
+      this.verifyAndSend(messageContent, LANG, from, res);
       return;
     }
+  }
+
+  private async verifyAndSend(messageContent: string, lang: string, from: string, res: Response) {
+    Logger.log(messageContent)
+    this.appService.addMessage(from, messageContent);
+    const response = this.appService.verifyMsg(messageContent, lang);
+
+    await this.appService.sendMessage(from, response)
+      .then(() => Logger.log(`Message sent to ${from} via Messaging Service pool.`))
+      .catch(error => console.error('Failed to send message via Messaging Service:', error));
+
+    res.setHeader('Content-Type', 'text/xml');
+    res.send(new MessagingResponse().toString());
   }
 }

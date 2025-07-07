@@ -1,26 +1,26 @@
 [
   {
     "from": "+12489637551",
+    "content": "^Hola, habla el (.+?)\\. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas\\. Responda SÍ para dar su consentimiento o STOP para no participar\\. Si no da consentimiento, (.+?) lo contactara con mas intrucciones\\.$"
+  },
+  {
+    "from": "+12489637551",
     "content": "^Hello, this is the (.+?) \\((.+?)\\)\\. We'd like to send you health\\-related text updates, including symptom monitoring\\. Reply YES to consent or STOP to opt out\\. If you do not give consent, (.+?) will contact you with further instructions\\.$"
   },
   {
     "from": "+12489637551",
-    "content": "^Hola, habla el (.+?)\\. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas\\. Responda SÍ para dar su consentimiento o STOP para no participar\\.$"
+    "content": "^Muchas gracias\\. ¿En qué idioma prefieres recibir los mensajes\\? Responda con '1' para Inglés o '2' para Español\\.$"
   },
   {
     "from": "+12489637551",
-    "content": "Muchas gracias. ¿En qué idioma prefieres recibir los mensajes? Responda con '1' para Inglés o '2' para Español."
+    "content": "^Thank you! What language do you prefer to receive messages in\\? Reply with '1' for English  '2' for Espanol\\.$"
   },
   {
     "from": "+12489637551",
-    "content": "Thank you! What language do you prefer to receive messages in? Reply with '1' for English  '2' for Espanol."
+    "content": "^¡Hola! (.+?) \\((.+?)\\) se comunica con usted porque es posible que haya estado expuesto al sarampión\\. Durante el período de control de 21 dias, recibirá un mensaje de texto diario de (.+?) en el que se le preguntará sobre los síntomas que usted, o la persona a la que usted representa, puedan estar teniendo\\. Aunque la pregunta es la misma, es importante contestar todos los días\\. Si contesta “sí” a la pregunta, puede esperar recibir una llamada telefónica de (.+?) para ayudarle\\. Si usted accidentalmente responde equivocadamente cuando se le pregunta sobre sus sintomas, puede mandar la respuesta correcta en otro mensaje de texto en cualquier momento\\. Si prefiere ya no recibir mensajes, puede reiniciar la cadena de mensajes al enviar “START” al ultimo mensaje que ha recibido\\. Responder a estos mensajes ayuda a que reciba atención temprana si se enferma y mantiene a salvo a otras personas a su alrededor\\. Si se le pidió que proporcionara un registro de vacunas anteriores contra el sarampión, que se hiciera un análisis de sangre o cualquier otro seguimiento, comuníquese con (.+?) cuando esto haya sido completado\\. Si tiene preguntas o síntomas en cualquier momento, por favor llame a (.+?) al (.+?) option 3\\. Gracias\\.$"
   },
   {
     "from": "+12489637551",
-    "content": "¡Hola! El [organization] ([shortname]) se comunica con usted porque es posible que haya estado expuesto al sarampión. Durante el período de control de 21 dias, recibirá un mensaje de texto diario de [shortname] en el que se le preguntará sobre los síntomas que usted, o la persona a la que usted representa, puedan estar teniendo. Aunque la pregunta es la misma, es importante contestar todos los días. Si contesta “sí” a la pregunta, puede esperar recibir una llamada telefónica de [shortname] para ayudarle. Si usted accidentalmente responde equivocadamente cuando se le pregunta sobre sus sintomas, puede mandar la respuesta correcta en otro mensaje de texto en cualquier momento. Si prefiere ya no recibir mensajes, puede reiniciar la cadena de mensajes al enviar “START” al ultimo mensaje que ha recibido. Responder a estos mensajes ayuda a que reciba atención temprana si se enferma y mantiene a salvo a otras personas a su alrededor. Si se le pidió que proporcionara un registro de vacunas anteriores contra el sarampión, que se hiciera un análisis de sangre o cualquier otro seguimiento, comuníquese con [shortname] cuando esto haya sido completado. Si tiene preguntas o síntomas en cualquier momento, por favor llame a [shortname] al [case.organization.phoneNumber] option 3. Gracias."
-  },
-  {
-    "from": "+12489637551",
-    "content": "Hola, este es su chequeo diario de salud de el [organization] ([shortname]) con respecto a su exposición al sarampión. Por favor complete esta breve y confidencial encuesta de salud. Si tiene preguntas, comuníquese con [shortname] al [case.organization.phoneNumber] option 3.\n\n[url]\n\nReply STOP to unsubscribe"
+    "content": "^Hola, este es su chequeo diario de salud de (.+?) \\((.+?)\\) con respecto a su exposición al sarampión\\. Por favor complete esta breve y confidencial encuesta de salud\\. Si tiene preguntas, comuníquese con (.+?) al (.+?) option 3\\.\\n\\n\\[url\\]\\n\\nReply STOP to unsubscribe$"
   }
 ]

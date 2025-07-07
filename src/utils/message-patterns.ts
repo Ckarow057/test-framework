@@ -17,7 +17,7 @@ export const messageTemplates: MessageTemplate[] = [
     {
         lang: "en",
         type: "esConsentReq",
-        content: "Hola, habla el [organization]. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas. Responda SÍ para dar su consentimiento o STOP para no participar.",
+        content: "Hola, habla el [organization]. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas. Responda SÍ para dar su consentimiento o STOP para no participar. Si no da consentimiento, [organization] lo contactara con mas intrucciones.",
         description: "Initial text message",
         response: "YES"
     },
@@ -80,7 +80,7 @@ export const messageTemplates: MessageTemplate[] = [
     {
         lang: "es",
         type: "esConsentReq",
-        content: "Hola, habla el [organization]. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas. Responda SÍ para dar su consentimiento o STOP para no participar.",
+        content: "Hola, habla el [organization]. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas. Responda SÍ para dar su consentimiento o STOP para no participar. Si no da consentimiento, [organization] lo contactara con mas intrucciones.",
         description: "Initial text message",
         response: "SÍ"
     },

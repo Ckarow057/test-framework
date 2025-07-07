@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { createMessagePattern, messageTemplates } from './utils/message-patterns';
 import { Twilio } from 'twilio';
+import 'dotenv/config';
 
 
 @Injectable()
@@ -20,8 +21,14 @@ export class AppService {
   }
 
   async sendMessage(to: string, response: string) {
-    const serviceNumber = "2489637551";
-    // const serviceNumber = "6084776016";
+    const serviceNumber = process.env.SERVICE_NUMBER;
+    if (!serviceNumber) {
+      throw new Error('SERVICE_NUMBER environment variable is not defined');
+    }
+    const baseNumber = process.env.BASE_NUMBER;
+    if (!baseNumber) {
+      throw new Error('SERVICE_NUMBER environment variable is not defined');
+    }
     if (to === serviceNumber) {
       Logger.log('TO/FROM SIMILARITY ISSUE.');
       return;
@@ -30,8 +37,7 @@ export class AppService {
       const message = await this.twilio.messages.create({
         to: serviceNumber,
         body: response,
-        // messagingServiceSid: this.messagingServiceSid,
-        from: "2485878298"
+        from: baseNumber
       });
     } catch (error) {
       console.error('Failed to send message:', error);

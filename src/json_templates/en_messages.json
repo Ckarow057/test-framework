@@ -5,7 +5,7 @@
   },
   {
     "from": "+12489637551",
-    "content": "^Hola, habla el (.+?)\\. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas\\. Responda SÍ para dar su consentimiento o STOP para no participar\\.$"
+    "content": "^Hola, habla el (.+?)\\. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas\\. Responda SÍ para dar su consentimiento o STOP para no participar\\. Si no da consentimiento, (.+?) lo contactara con mas intrucciones\\.$"
   },
   {
     "from": "+12489637551",
