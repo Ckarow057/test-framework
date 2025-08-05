@@ -1,0 +1,26 @@
+[
+  {
+    "from": "+12489637551",
+    "content": "^Hello, this is the (.+?) \\((.+?)\\)\\. We'd like to send you health\\-related text updates, including symptom monitoring\\. Reply YES to consent or STOP to opt out\\. If you do not give consent, (.+?) will contact you with further instructions\\.$"
+  },
+  {
+    "from": "+12489637551",
+    "content": "^Hola, habla el (.+?)\\. Nos gustaría enviarle actualizaciones de texto relacionadas con la salud, incluyendo el control de síntomas\\. Responda SÍ para dar su consentimiento o STOP para no participar\\. Si no da consentimiento, (.+?) lo contactara con mas intrucciones\\.$"
+  },
+  {
+    "from": "+12489637551",
+    "content": "^Muchas gracias\\. ¿En qué idioma prefieres recibir los mensajes\\? Responda con '1' para Inglés o '2' para Español\\.$"
+  },
+  {
+    "from": "+12489637551",
+    "content": "^Thank you! What language do you prefer to receive messages in\\? Reply with '1' for English  '2' for Espanol\\.$"
+  },
+  {
+    "from": "+12489637551",
+    "content": "^Hello! (.+?) \\((.+?)\\) is contacting you because you may have been exposed to measles\\. During your 21\\-day monitoring period, you will receive a daily text message with a link to a survey from (.+?) asking about symptoms that you, or the person you are responding for, may be experiencing\\. Even though the survey question is the same, it is important to answer each day\\. If you answer \"yes\" to the question, you can expect to receive a phone call from (.+?) to assist you\\. If you accidentally enter the wrong response when asked about symptoms, you can click on the link and respond with the correct answer at any time\\. If you choose to opt out, you can restart messages by replying \"START\" to the last message you received\\. You may change the language of the form by clicking on the flag at the top right of the screen\\. Responding to the daily survey helps get you care early if you get sick and keeps others around you safe\\. If you were asked to provide a record of prior measles vaccine, get a blood test, or any other follow\\-up, please contact (.+?) when complete\\. If you have any questions or have symptoms at any time, call (.+?) at (.+?) option 3\\. Thank you!$"
+  },
+  {
+    "from": "+12489637551",
+    "content": "^Hello, this is your daily health check\\-in from Ingham County Health Department regarding your measles exposure\\. Please complete this brief and confidential health form\\. For questions, please contact ICHD at 517\\-887\\-4308 option 3\\.\\n\\n\\[url\\]\\n\\nReply STOP to unsubscribe$"
+  }
+]
